@@ -1,0 +1,215 @@
+:root {
+  --ink: #FFFFFF;
+  /* primary background (white) */
+  --ink-2: #FAFAFA;
+  /* card / raised surface (light grey) */
+  --bone: #111111;
+  /* primary text on dark (black) */
+  --chalk: #767676;
+  /* muted text */
+  --border-color: #E5E5E5;
+  /* borders */
+  --brass: #000000;
+  /* primary accent / CTA (black) */
+  --rust: #DC2626;
+  /* secondary accent / error (red) */
+  --thread-green: #16A34A;
+  /* success / in-stock state (green) */
+
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius: 4px;
+  --border-dash: 1px solid var(--border-color);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--bone);
+  text-transform: none;
+  /* simple, modern casing */
+}
+
+a {
+  color: var(--bone);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--chalk);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-display);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Form Styles */
+input,
+select,
+textarea {
+  background: var(--ink-2);
+  border: 1px solid var(--border-color);
+  color: var(--bone);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  border-radius: var(--radius);
+  outline: none;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brass);
+  background: #FFFFFF;
+}
+
+/* Primary CTA */
+.btn-primary {
+  background: var(--brass);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #333333;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  background: var(--border-color);
+  color: var(--chalk);
+  cursor: not-allowed;
+}
+
+/* Secondary CTA / Outline */
+.btn-secondary {
+  background: transparent;
+  color: var(--bone);
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--brass);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Badges & Monospace details */
+.sku,
+.price,
+.spec-label {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--chalk);
+}
+
+/* Utilities */
+.text-brass {
+  color: var(--brass);
+}
+
+.text-rust {
+  color: var(--rust);
+}
+
+.text-green {
+  color: var(--thread-green);
+}
+
+.text-chalk {
+  color: var(--chalk);
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+}
+
+/* Focus outline for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--brass) !important;
+  outline-offset: 2px;
+}
