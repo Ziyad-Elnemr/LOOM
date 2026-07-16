@@ -14,7 +14,7 @@ export interface CustomerUser {
 @Injectable({ providedIn: 'root' })
 export class UserService {
     private http = inject(HttpClient);
-    private readonly baseUrl = `${environment.apiBaseUrl}/users`;
+    private readonly baseUrl = `${environment.apiUrl}/users`;
 
     getAllUsers() {
         return this.http.get<{ success: boolean; data: CustomerUser[] }>(this.baseUrl);

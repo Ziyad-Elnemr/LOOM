@@ -6,12 +6,12 @@ import { Cart } from "../interface/api.models";
 
 @Injectable({ providedIn: "root" })
 export class CartService {
-  private readonly cartUrl = `${environment.apiBaseUrl}/cart`;
+  private readonly cartUrl = `${environment.apiUrl}/cart`;
 
   constructor(
     private readonly http: HttpClient,
     private readonly authService: AuthService,
-  ) {}
+  ) { }
 
   getCart() {
     return this.http.get<{ success: boolean; data: Cart }>(

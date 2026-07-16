@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
-    private readonly cartUrl = `${environment.apiBaseUrl}/cart`;
+    private readonly cartUrl = `${environment.apiUrl}/cart`;
     private itemsSignal = signal<CartItem[]>([]);
 
     items = this.itemsSignal.asReadonly();

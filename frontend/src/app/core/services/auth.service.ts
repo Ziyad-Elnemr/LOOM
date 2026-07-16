@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    private readonly authUrl = `${environment.apiBaseUrl}/auth`;
+    private readonly authUrl = `${environment.apiUrl}/auth`;
     private currentUser = signal<User | null>(null);
 
     user = this.currentUser.asReadonly();
@@ -54,7 +54,7 @@ export class AuthService {
     tryRestoreSession() {
         return this.http.post<{ success: boolean; data: { accessToken: string } }>(`${this.authUrl}/refresh`, {}).pipe(
             tap(res => this.tokenService.setToken(res.data.accessToken)),
-            switchMap(() => this.http.get<{ success: boolean; data: User }>(`${environment.apiBaseUrl}/users/me`)),
+            switchMap(() => this.http.get<{ success: boolean; data: User }>(`${environment.apiUrl}/users/me`)),
             tap(res => this.currentUser.set(res.data)),
             catchError(() => {
                 this.tokenService.clearToken();
@@ -65,7 +65,7 @@ export class AuthService {
     }
 
     updateProfile(name: string, phone?: string, addresses?: any[]) {
-        return this.http.put<{ success: boolean; data: User }>(`${environment.apiBaseUrl}/users/me`, { name, phone, addresses }).pipe(
+        return this.http.put<{ success: boolean; data: User }>(`${environment.apiUrl}/users/me`, { name, phone, addresses }).pipe(
             tap(res => this.currentUser.set(res.data))
         );
     }

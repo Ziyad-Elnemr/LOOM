@@ -6,12 +6,12 @@ import { Order, ShippingAddress } from "../interface/api.models";
 
 @Injectable({ providedIn: "root" })
 export class OrderService {
-  private readonly orderUrl = `${environment.apiBaseUrl}/orders`;
+  private readonly orderUrl = `${environment.apiUrl}/orders`;
 
   constructor(
     private readonly http: HttpClient,
     private readonly authService: AuthService,
-  ) {}
+  ) { }
 
   createOrder(payload: {
     shippingAddress: ShippingAddress;

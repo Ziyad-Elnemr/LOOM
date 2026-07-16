@@ -261,7 +261,7 @@ export class OrderConfirmationComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.http.get<{ success: boolean; data: Order[] }>(`${environment.apiBaseUrl}/orders/my`).subscribe({
+      this.http.get<{ success: boolean; data: Order[] }>(`${environment.apiUrl}/orders/my`).subscribe({
         next: (res) => {
           const match = res.data.find((o: Order) => o._id === id);
           if (match) {

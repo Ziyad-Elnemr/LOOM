@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ReviewService {
-    private readonly reviewUrl = `${environment.apiBaseUrl}/reviews`;
+    private readonly reviewUrl = `${environment.apiUrl}/reviews`;
 
     constructor(private http: HttpClient) { }
 

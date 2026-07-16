@@ -10,13 +10,13 @@ import {
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-  private readonly authUrl = `${environment.apiBaseUrl}/auth`;
+  private readonly authUrl = `${environment.apiUrl}/auth`;
   private accessToken: string | null = null;
   private currentUserSubject = new BehaviorSubject<AuthUser | null>(null);
 
   currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
 
   get currentUser(): AuthUser | null {
     return this.currentUserSubject.value;
@@ -85,7 +85,7 @@ export class AuthService {
 
   getMe() {
     return this.http.get<{ success: boolean; data: AuthUser }>(
-      `${environment.apiBaseUrl}/users/me`,
+      `${environment.apiUrl}/users/me`,
       this.getAuthOptions(),
     );
   }

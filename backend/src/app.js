@@ -17,7 +17,13 @@ const { errorHandler, notFound } = require("./middleware/errorMiddleware");
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  "http://localhost:4200",
+  "https://exemplary-education-production-df52.up.railway.app"
+].filter(Boolean);
+
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 

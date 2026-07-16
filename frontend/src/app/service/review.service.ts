@@ -6,12 +6,12 @@ import { Review } from "../interface/api.models";
 
 @Injectable({ providedIn: "root" })
 export class ReviewService {
-  private readonly reviewUrl = `${environment.apiBaseUrl}/reviews`;
+  private readonly reviewUrl = `${environment.apiUrl}/reviews`;
 
   constructor(
     private readonly http: HttpClient,
     private readonly authService: AuthService,
-  ) {}
+  ) { }
 
   getProductReviews(productId: string) {
     return this.http.get<{ success: boolean; data: Review[] }>(
